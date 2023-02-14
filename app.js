@@ -27,9 +27,9 @@ app.use(express.static('public', options))
 // #############################################################################
 // Catch all handler for all other request.
 
-app.use('/download.mp3', (req, res) => {
+app.get('/download.mp3', (req, res) => {
   res.type('audio/mpeg');
-  res.sendFile("public", "Where_I_Am_Tim_Shepherd_22033027_01.mp3");
+  res.sendFile(path.join(__dirname, 'public'), "Where_I_Am_Tim_Shepherd_22033027_01.mp3");
 })
 
 app.use('*', (req,res) => {
