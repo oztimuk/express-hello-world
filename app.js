@@ -27,12 +27,9 @@ app.use(express.static('public', options))
 // #############################################################################
 // Catch all handler for all other request.
 
-app.get('Where_I_Am_Tim_Shepherd_22033027_01.mp3', function(audioFile) {
-    res.set(_.extend(_.pick(audioFile.headers, 'accept-ranges', 'content-type', 'content-length'), { 'Access-Control-Allow-Origin': '*' }));
-    audioFile.pipe(res);
-  }).on('error', function(err) {
-    console.error(err);
-  }).end();
+app.use('*', (req, res) => {
+  res.sendFile("public", "Where_I_Am_Tim_Shepherd_22033027_01.mp3");
+})
 
 app.use('*', (req,res) => {
   res.json({
