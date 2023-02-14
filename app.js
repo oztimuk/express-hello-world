@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
 var options = {
   dotfiles: 'ignore',
   etag: false,
-  extensions: ['htm', 'html','css','js','ico','jpg','jpeg','png','svg', 'mp3'],
+  extensions: ['htm', 'html','css','js','ico','jpg','jpeg','png','svg'],
   index: ['index.html'],
   maxAge: '1m',
   redirect: false
@@ -26,6 +26,13 @@ app.use(express.static('public', options))
 
 // #############################################################################
 // Catch all handler for all other request.
+
+app.get('/download', function(req, res){
+  fs.readFile("./public/Where_I_Am_Tim_Shepherd_22033027_01.mp3", function(err, result) {
+    res.send(result.toString("base64"));
+  }); 
+}
+
 app.use('*', (req,res) => {
   res.json({
       at: new Date().toISOString(),
