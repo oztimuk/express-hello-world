@@ -28,7 +28,7 @@ app.use(express.static('public', options))
 // Catch all handler for all other request.
 
 app.get('/download', function(req, res){
-  const file = 'public/Where_I_Am_Tim_Shepherd_22033027_01.mp3';
+  const file = './public/Where_I_Am_Tim_Shepherd_22033027_01.mp3';
   res.download(file); // Set disposition and send it.
 });
 
