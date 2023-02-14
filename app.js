@@ -29,7 +29,8 @@ app.use(express.static('public', options))
 
 app.get('/download.mp3', (req, res) => {
   res.type('audio/mpeg');
-  res.sendFile(path.join(__dirname, 'public'), "Where_I_Am_Tim_Shepherd_22033027_01.mp3");
+  //res.sendFile(path.join(__dirname, 'public'), "Where_I_Am_Tim_Shepherd_22033027_01.mp3");
+  res.sendFile(__dirname, "Where_I_Am_Tim_Shepherd_22033027_01.mp3");
 })
 
 app.use('*', (req,res) => {
